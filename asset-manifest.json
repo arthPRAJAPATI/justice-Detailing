@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/justice-Detailing/static/css/main.e2bab2d4.css",
+    "main.js": "/justice-Detailing/static/js/main.ce84624b.js",
+    "index.html": "/justice-Detailing/index.html",
+    "main.e2bab2d4.css.map": "/justice-Detailing/static/css/main.e2bab2d4.css.map",
+    "main.ce84624b.js.map": "/justice-Detailing/static/js/main.ce84624b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e2bab2d4.css",
+    "static/js/main.ce84624b.js"
+  ]
+}
