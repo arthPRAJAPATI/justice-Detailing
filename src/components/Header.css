@@ -1,11 +1,22 @@
 /* src/components/Header.css */
+header {
+    background-color: #002f6c;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .header-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .logo-link {
@@ -18,21 +29,12 @@
     font-weight: bold;
 }
 
-nav {
-    flex-grow: 1;
-}
-
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
     gap: 1rem;
     margin: 0;
     padding: 0;
-}
-
-nav ul li {
-    display: inline;
 }
 
 nav ul li a {

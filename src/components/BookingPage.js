@@ -1,79 +1,25 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import CalendlyEmbed from './CalendlyEmbed';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import './BookingPage.css';
+import CalendlyEmbed from './CalendlyEmbed'
 
-const BookingPage = ({ selectedPackage, selectedServices }) => {
-    const [address, setAddress] = useState('');
-    const [selectedDate, setSelectedDate] = useState('');
-    const [selectedTime, setSelectedTime] = useState('');
-    const navigate = useNavigate();
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle the booking logic here, e.g., sending the data to a server
-
-        // Navigate to confirmation or home page after booking
-        navigate('/confirmation');
-    };
+const BookingPage = () => {
+    const location = useLocation();
+    const { selectedCar } = location.state || {};
 
     return (
-        <div className="booking-page">
+        <section className="booking-section">
             <h2>Book an Appointment</h2>
-            <p><strong>Package:</strong> {selectedPackage}</p>
-            <p><strong>Services:</strong></p>
-            <ul>
-                {selectedServices.map((service, index) => (
-                    <li key={index}>{service}</li>
-                ))}
-            </ul>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="address">Address:</label>
-                    <input
-                        type="text"
-                        id="address"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        required
-                    />
+            {selectedCar ? (
+                <div>
+                    <p>Booking for {selectedCar.year} {selectedCar.make} {selectedCar.model}</p>
+                    {/* Include your booking form or Calendly embed code here */}
+                    <CalendlyEmbed url="https://calendly.com/your-calendly-url" />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="date">Select Date:</label>
-                    <input
-                        type="date"
-                        id="date"
-                        value={selectedDate}
-                        onChange={(e) => setSelectedDate(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="time">Select Time:</label>
-                    <select
-                        id="time"
-                        value={selectedTime}
-                        onChange={(e) => setSelectedTime(e.target.value)}
-                        required
-                    >
-                        <option value="">Select a time</option>
-                        <option value="7:00 AM">7:00 AM</option>
-                        <option value="8:00 AM">8:00 AM</option>
-                        <option value="9:00 AM">9:00 AM</option>
-                        <option value="10:00 AM">10:00 AM</option>
-                        <option value="11:00 AM">11:00 AM</option>
-                        <option value="12:00 PM">12:00 PM</option>
-                        <option value="1:00 PM">1:00 PM</option>
-                        <option value="2:00 PM">2:00 PM</option>
-                        <option value="3:00 PM">3:00 PM</option>
-                        <option value="4:00 PM">4:00 PM</option>
-                        <option value="5:00 PM">5:00 PM</option>
-                    </select>
-                </div>
-                <button type="submit">Confirm Booking</button>
-            </form>
-            <CalendlyEmbed url="https://calendly.com/your-calendly-url" />
-        </div>
+            ) : (
+                <p>Please select a car model to proceed with booking.</p>
+            )}
+        </section>
     );
 };
 

@@ -2,74 +2,48 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Pricing.css';
 
-const Pricing = ({ selectedCar, onBooking }) => {
-    const { year, make, model } = selectedCar;
+const Pricing = ({ selectedCar }) => {
     const navigate = useNavigate();
+    const isCarSelected = selectedCar.year && selectedCar.make && selectedCar.model;
 
-    const getPrice = (basePrice) => {
-        let adjustedPrice = basePrice;
-        if (year === '2024') adjustedPrice += 10;
-        if (make === 'Honda') adjustedPrice += 5;
-        if (model === 'Civic') adjustedPrice += 8;
-        return adjustedPrice.toFixed(2);
-    };
-
-    const handleBooking = (pkg, services) => {
-        onBooking(pkg, services);
-        navigate('/book');
+    const handleBooking = () => {
+        if (isCarSelected) {
+            navigate('/book', { state: { selectedCar } });
+        }
     };
 
     return (
-        <section id="pricing" className="pricing-section">
+        <section className="pricing-section" id="pricing">
             <h2>Convenient And Accessible</h2>
             <p>Auto detailing services you can count on.</p>
-            {year && make && model ? (
-                <p>Selected Car: {year} {make} {model}</p>
+            {isCarSelected ? (
+                <p className="selected-car">
+                    Selected Car: {selectedCar.year} {selectedCar.make} {selectedCar.model}
+                </p>
             ) : (
-                <p>Select a car model to view prices</p>
+                <p className="select-car-message">Select a car model to view prices</p>
             )}
             <div className="pricing-container">
                 <div className="pricing-card">
                     <h3>Panda X</h3>
-                    <p className="service-type">Express Service</p>
-                    <img src="path/to/car-image.png" alt="Panda X" />
-                    <h2>${getPrice(65.82)}*</h2>
-                    <p className="price-info">
-                        Above price is for {year} {make} {model}.*
-                        <br />
-                        Prices are specific to your vehicle.*
-                    </p>
-                    <button onClick={() => handleBooking('Panda X', ['Thorough interior vacuum', 'Dashboard, console and door wipe-down', 'Mirror and window cleaning', 'Door jamb cleaning'])}>
-                        Book an Appointment
-                    </button>
+                    <p>Express Service</p>
+                    {isCarSelected && <p className="price">$65.82*</p>}
+                    <p>*Above price is for {selectedCar.year || 'your selected year'} {selectedCar.make || 'your selected make'} {selectedCar.model || 'your selected model'}.</p>
+                    <button onClick={handleBooking} disabled={!isCarSelected}>Book an Appointment</button>
                 </div>
                 <div className="pricing-card">
                     <h3>Revive</h3>
-                    <p className="service-type">Full Detail</p>
-                    <img src="path/to/car-image.png" alt="Revive" />
-                    <h2>${getPrice(175.46)}*</h2>
-                    <p className="price-info">
-                        Above price is for {year} {make} {model}.*
-                        <br />
-                        Prices are specific to your vehicle.*
-                    </p>
-                    <button onClick={() => handleBooking('Revive', ['Meticulous detailing of the dashboard, console, cup holders, & doors', 'Full-scale steam cleaning of the interior', 'Treatment and conditioning for leather seats'])}>
-                        Book an Appointment
-                    </button>
+                    <p>Full Detail</p>
+                    {isCarSelected && <p className="price">$175.46*</p>}
+                    <p>*Above price is for {selectedCar.year || 'your selected year'} {selectedCar.make || 'your selected make'} {selectedCar.model || 'your selected model'}.</p>
+                    <button onClick={handleBooking} disabled={!isCarSelected}>Book an Appointment</button>
                 </div>
                 <div className="pricing-card">
                     <h3>Black</h3>
-                    <p className="service-type">Full Detail + Protection</p>
-                    <img src="path/to/car-image.png" alt="Black" />
-                    <h2>${getPrice(271.96)}*</h2>
-                    <p className="price-info">
-                        Above price is for {year} {make} {model}.*
-                        <br />
-                        Prices are specific to your vehicle.*
-                    </p>
-                    <button onClick={() => handleBooking('Black', ['Interior ceramic coating', 'Car paint iron decontamination', 'Wheel iron decontamination'])}>
-                        Book an Appointment
-                    </button>
+                    <p>Full Detail + Protection</p>
+                    {isCarSelected && <p className="price">$271.96*</p>}
+                    <p>*Above price is for {selectedCar.year || 'your selected year'} {selectedCar.make || 'your selected make'} {selectedCar.model || 'your selected model'}.</p>
+                    <button onClick={handleBooking} disabled={!isCarSelected}>Book an Appointment</button>
                 </div>
             </div>
         </section>

@@ -11,16 +11,9 @@ import './App.css';
 
 const App = () => {
   const [selectedCar, setSelectedCar] = useState({ year: '', make: '', model: '' });
-  const [selectedPackage, setSelectedPackage] = useState('');
-  const [selectedServices, setSelectedServices] = useState([]);
 
   const handlePriceCheck = (carDetails) => {
     setSelectedCar(carDetails);
-  };
-
-  const handleBooking = (pkg, services) => {
-    setSelectedPackage(pkg);
-    setSelectedServices(services);
   };
 
   return (
@@ -33,22 +26,14 @@ const App = () => {
             element={
               <>
                 <HeroSection onPriceCheck={handlePriceCheck} />
-                <Services />
-                <Pricing selectedCar={selectedCar} onBooking={handleBooking} />
+                <Services selectedCar={selectedCar} />
+                <Pricing selectedCar={selectedCar} />
                 <Reviews />
                 <Footer />
               </>
             }
           />
-          <Route
-            path="/book"
-            element={
-              <BookingPage
-                selectedPackage={selectedPackage}
-                selectedServices={selectedServices}
-              />
-            }
-          />
+          <Route path="/book" element={<BookingPage />} />
           <Route path="/confirmation" element={<div>Confirmation Page</div>} />
         </Routes>
       </div>
