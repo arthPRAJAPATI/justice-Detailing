@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/justice-Detailing/static/css/main.e2bab2d4.css",
-    "main.js": "/justice-Detailing/static/js/main.ce84624b.js",
+    "main.css": "/justice-Detailing/static/css/main.b5edea30.css",
+    "main.js": "/justice-Detailing/static/js/main.069e5b8a.js",
     "index.html": "/justice-Detailing/index.html",
-    "main.e2bab2d4.css.map": "/justice-Detailing/static/css/main.e2bab2d4.css.map",
-    "main.ce84624b.js.map": "/justice-Detailing/static/js/main.ce84624b.js.map"
+    "main.b5edea30.css.map": "/justice-Detailing/static/css/main.b5edea30.css.map",
+    "main.069e5b8a.js.map": "/justice-Detailing/static/js/main.069e5b8a.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2bab2d4.css",
-    "static/js/main.ce84624b.js"
+    "static/css/main.b5edea30.css",
+    "static/js/main.069e5b8a.js"
   ]
 }
