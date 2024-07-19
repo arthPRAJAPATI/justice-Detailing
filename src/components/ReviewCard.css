@@ -1,0 +1,28 @@
+/* src/components/ReviewCard.css */
+.review-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    margin: 1rem;
+    max-width: 300px;
+}
+
+.review-image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.review-text {
+    font-style: italic;
+    margin: 1rem 0;
+}
+
+.review-rating {
+    color: #ffa500;
+    font-size: 1.2rem;
+}

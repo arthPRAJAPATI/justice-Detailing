@@ -1,0 +1,17 @@
+/* src/components/Reviews.css */
+.reviews-section {
+    background: #f7f7f7;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.reviews-section h2 {
+    margin-bottom: 2rem;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
