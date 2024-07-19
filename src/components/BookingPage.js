@@ -14,7 +14,7 @@ const BookingPage = () => {
                 <div>
                     <p>Booking for {selectedCar.year} {selectedCar.make} {selectedCar.model}</p>
                     {/* Include your booking form or Calendly embed code here */}
-                    <CalendlyEmbed url="https://calendly.com/your-calendly-url" />
+                    <CalendlyEmbed url="https://calendly.com/justicedetailers" />
                 </div>
             ) : (
                 <p>Please select a car model to proceed with booking.</p>
